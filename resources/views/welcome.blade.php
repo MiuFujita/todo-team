@@ -9,7 +9,7 @@
     </head>
     <body class="antialiased">
         <div class="top-page">
-            <h1 class="title">To do list</h1>
+            <h1 class="title">ToDoList</h1>
                     {{-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0"> --}}
                         @if (Route::has('login'))
                         <div
