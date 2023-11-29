@@ -14,11 +14,12 @@ class CreateTodosTable extends Migration
     public function up()
     {
         Schema::create('todos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('todo');
+            $table->id();
+            $table->string('title');
+            $table->text('content');
             $table->integer('user_id');
+            $table->string('image')->nullable(); //画像ファイル保存用カラム
             $table->timestamps();
-
         });
     }
 
