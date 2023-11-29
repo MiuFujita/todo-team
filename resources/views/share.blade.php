@@ -25,7 +25,7 @@
 
     <main>
         <div class="share-main">
-            Weekly Planner
+            Weekly Plan
         </div>
         <fieldset class="share-box">
             <div class="monday">
