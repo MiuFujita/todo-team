@@ -93,8 +93,8 @@
                     かきくけこ</span>
                 </div>    
             </div>
-            <div class="fryday">
-                <legend>Fryday</legend>
+            <div class="friday">
+                <legend>Friday</legend>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
