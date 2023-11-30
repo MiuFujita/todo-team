@@ -20,7 +20,15 @@ class CreateTodosTable extends Migration
             $table->integer('user_id');
             $table->string('image')->nullable(); //画像ファイル保存用カラム
             $table->timestamps();
+            $table->boolean('share')->default(false); // 'share' カラムを boolean 型で作成
+            $table->string('day')->nullable(); // 'day' カラムを date 型で作成、nullable() は NULL 値を許可するため
+        
         });
+        // マイグレーションファイルの修正
+        Schema::table('todos', function (Blueprint $table) {
+            $table->string('day')->change();
+        });
+        
     }
 
     /**
