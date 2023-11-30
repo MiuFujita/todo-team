@@ -38,14 +38,3 @@ fieldset {
     height: 1px; /* 下線の太さ */
     background-color: gray; /* 下線の色 */
 }
-
-.share-main {
-    text-align: center;
-}
-
-.share-box {
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}

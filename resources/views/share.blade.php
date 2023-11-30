@@ -14,9 +14,14 @@
                 <p>ToDoList</p>
             </div>
             <div class="header-right">
-                <p>
+                <p class="mytodo">
                     {{-- <a href="{{ route ('mytodo') }}"> --}}
-                        mylist
+                        My To Do
+                    {{-- </a> --}}
+                </p>
+                <p class="newcreate">
+                    {{-- <a href="{{  }}"> --}}
+                    新規作成
                     {{-- </a> --}}
                 </p>
             </div>
@@ -25,7 +30,7 @@
 
     <main>
         <div class="share-main">
-            Weekly Planner
+            Weekly To Do
         </div>
         <fieldset class="share-box">
             <div class="monday">

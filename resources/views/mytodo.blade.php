@@ -5,33 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset ('css/mytodo.css') }}">
+
 </head>
 <body>
-    <h1>my to do list</h1>
-    <div class="todo-wrapper">
+    <header>
+        <div class="header-text">
+            <div class="header-left">
+                <p>ToDoList</p>
+            </div>
+            <div class="header-right">
+                <p class="weeklytodo">
+                    {{-- <a href="{{ route ('mytodo') }}"> --}}
+                        Weekly To Do
+                    {{-- </a> --}}
+                </p>
+                <p class="newcreate">
+                    {{-- <a href="{{  }}"> --}}
+                    新規作成
+                    {{-- </a> --}}
+                </p>
+    
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <fieldset class="mylist-box">
+            <legend>My To Do</legend>
+            <div class="checkbox">
+                <input type="checkbox"/>
+                <span>
+                    {{-- <a href="{{  }}"></a> --}}
+                報告書の提出</span>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox"/>
+                <span>
+                    {{-- <a href="{{  }}"></a> --}}
+                会議資料の印刷</span>
+            </div>
+        </fieldset>
+    </main>
+
+    {{-- <div class="todo-wrapper">
         @foreach ($todos as $todo)
             <div class="todo-box">
                 <div>{{ $todo->todo }}</div>
-                {{-- <div class="destroy-btn">
+                <div class="destroy-btn">
                     @if ($tweet->user_id == Auth::user()->id)  
                         <form action="{{ route('destroy',[$tweet->id]) }}" method="post">
                             @csrf
                         <input type="submit" value="削除">
                         </form>
                     @endif
-                </div> --}}
+                </div>
             </div>
-            {{-- <div style="padding: 10px 40px">
+            <div style="padding: 10px 40px">
                 @if($tweet->likedBy(Auth::user())->count() > 0)
                 <a href="/likes/{{ $tweet->likedBy(Auth::user())->firstOrfail()->id }}"><i class="fas fa-heart-broken"></i></a>
                 @else
                 <a href="/tweets/{{ $tweet->id }}/likes"><i class="far fa-heart"></a></i>
                 @endif
                 {{ $tweet->likes->count() }}
-            </div> --}}
+            </div>
         @endforeach
-        {{-- {{ $tweets->links() }} --}}
-    </div>
+        {{ $tweets->links() }}
+    </div> --}}
 
 </body>
 </html>
