@@ -27,6 +27,8 @@ Route::get('/create', function () {
     return view('create');
 });
 
+Route::post('/create', 'App\Http\Controllers\TodoController@store')->name('store');
+
 Route::get('/detail', function () {
     return view('detail');
 });

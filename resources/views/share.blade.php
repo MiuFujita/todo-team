@@ -11,13 +11,13 @@
     <header>
         <div class="header-text">
             <div class="header-left">
-                <p>ToDoList</p>
+                <p><a href="{{ route('home') }}">ToDoList</a></p>
             </div>
             <div class="header-right">
                 <p class="mytodo">
-                    {{-- <a href="{{ route ('mytodo') }}"> --}}
+                    <a href="{{ route ('mytodo') }}">
                         My To Do
-                    {{-- </a> --}}
+                    </a>
                 </p>
                 <p class="newcreate">
                     {{-- <a href="{{  }}"> --}}

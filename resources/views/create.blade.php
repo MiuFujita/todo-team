@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="{{ route('store') }}" method="POST">
+    @csrf
     <div class="form-group">
         <label>タイトル</label>
         <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title">
@@ -36,5 +38,6 @@
         <input type="checkbox" name="share" value="share">共有する
     </div>
     <button type="submit" class="btn btn-primary">作成</button>
+    </form>
 </body>
 </html>
