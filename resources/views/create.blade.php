@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('store') }}" method="POST">
+    <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label>タイトル</label>
