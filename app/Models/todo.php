@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    protected $fillable = [
+        'user_id','title','content','image','share','day'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
