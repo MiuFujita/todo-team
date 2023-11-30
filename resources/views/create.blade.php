@@ -14,12 +14,12 @@
     </div>
     <div class="form-group">
         <label>内容</label>
-        <textarea class="form-control" placeholder="内容" rows="5" name="body">
+        <textarea class="form-control" placeholder="内容" rows="5" name="content">
         </textarea>
     </div>
     <div class="form-group">
-        <label for="avatar">写真</label>
-        <input id="avatar" type="file" class="form-control" name="avatar">
+        <label for="image">写真</label>
+        <input id="image" type="file" class="form-control" name="image">
     </div>
     <div class="form-group">
         <label>期限</label>
