@@ -33,9 +33,9 @@
 
         </div>
         <button type="button" onclick="" class="edit-btn">編集</button>
-        <button type="button" onclick="" class="delete-btn">削除</button>
+        <button type="button" onclick="history.back()" class="delete-btn">削除</button>
         {{-- ↓typeはsubmitかな？ --}}
-        <button type="button" onclick="" class="add-btn">Mytodoに追加</button>
+        <button type="submit" onclick="" class="add-btn">Mytodoに追加</button>
         <button type="button" onclick="history.back()" class="return-btn">戻る</button>
     </div>
 </body>

@@ -20,7 +20,7 @@
                     </a>
                 </p>
                 <p class="newcreate">
-                    {{-- <a href="{{  }}"> --}}
+                    {{-- <a href="{{ route ('create') }}"> --}}
                     新規作成
                     {{-- </a> --}}
                 </p>
@@ -38,13 +38,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -53,13 +53,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -68,13 +68,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -83,13 +83,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -98,13 +98,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -113,13 +113,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -128,13 +128,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -143,13 +143,13 @@
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     あいうえお</span>
                 </div>
                 <div class="checkbox">
                   <input type="checkbox"/>
                   <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                     かきくけこ</span>
                 </div>    
             </div>
@@ -157,5 +157,6 @@
         </fieldset>
           
     </main>
+    <script src="{{ asset ('js/share.js') }}"></script>
 </body>
 </html>
