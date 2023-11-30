@@ -1,5 +1,3 @@
-{{-- 仮です --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +10,11 @@
     @csrf
     <div class="form-group">
         <label>タイトル</label>
-        <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title">
+        <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title" maxlength="30">
     </div>
     <div class="form-group">
         <label>内容</label>
-        <textarea class="form-control" placeholder="内容" rows="5" name="content">
+        <textarea class="form-control" placeholder="内容" rows="3" name="content" maxlength="140">
         </textarea>
     </div>
     <div class="form-group">
