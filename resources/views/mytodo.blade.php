@@ -16,12 +16,12 @@
             </div>
             <div class="header-right">
                 <p class="weeklytodo">
-                    {{-- <a href="{{ route ('mytodo') }}"> --}}
+                    {{-- <a href="{{ route ('share') }}"> --}}
                         Weekly To Do
                     {{-- </a> --}}
                 </p>
                 <p class="newcreate">
-                    {{-- <a href="{{  }}"> --}}
+                    {{-- <a href="{{ route ('create') }}"> --}}
                     新規作成
                     {{-- </a> --}}
                 </p>
@@ -36,13 +36,13 @@
             <div class="checkbox">
                 <input type="checkbox"/>
                 <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                 報告書の提出</span>
             </div>
             <div class="checkbox">
                 <input type="checkbox"/>
                 <span>
-                    {{-- <a href="{{  }}"></a> --}}
+                    {{-- <a href="{{ route ('detail') }}"></a> --}}
                 会議資料の印刷</span>
             </div>
         </fieldset>
@@ -72,6 +72,6 @@
         @endforeach
         {{ $tweets->links() }}
     </div> --}}
-
+<script src="{{ asset ('js/mytodo.js') }}"></script>
 </body>
 </html>
