@@ -21,9 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/mytodo', function () {
-    return view('mytodo');
-});
+Route::get('/mytodo', 'App\Http\Controllers\TodoController@mytodo')->name('mytodo');
 
 Route::get('/create', function () {
     return view('create');
@@ -40,3 +38,4 @@ Route::get('/edit', function () {
 Route::get('/share', function () {
     return view('share');
 });
+// Route::get('/share', 'App\Http\Controllers\TodoController@share')->name('share');
