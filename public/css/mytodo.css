@@ -9,6 +9,15 @@ body {
     justify-content: space-around;
 }
 
+.header-right {
+    display: flex;
+    justify-content: space-around;
+}
+
+.newcreate {
+    margin-left: 50px;
+}
+
 fieldset {
     width: 50%;
     border: none;

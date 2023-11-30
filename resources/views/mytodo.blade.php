@@ -15,18 +15,24 @@
                 <p>ToDoList</p>
             </div>
             <div class="header-right">
-                <p>
+                <p class="weeklytodo">
                     {{-- <a href="{{ route ('mytodo') }}"> --}}
-                        Weekly Plan
+                        Weekly To Do
                     {{-- </a> --}}
                 </p>
+                <p class="newcreate">
+                    {{-- <a href="{{  }}"> --}}
+                    新規作成
+                    {{-- </a> --}}
+                </p>
+    
             </div>
         </div>
     </header>
 
     <main>
         <fieldset class="mylist-box">
-            <legend>My To Do List</legend>
+            <legend>My To Do</legend>
             <div class="checkbox">
                 <input type="checkbox"/>
                 <span>
