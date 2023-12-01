@@ -23,6 +23,11 @@ class TodoController extends Controller
         return view('create');
     }
 
+    // public function share()
+    // {
+    //     return view('share');
+    // }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -46,7 +51,7 @@ class TodoController extends Controller
         $isShared = $request->has('share');
         $dayValue = $request->input('day');
 
-        Todo::create([
+        $todo = Todo::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'content' => $request->content,
@@ -56,8 +61,52 @@ class TodoController extends Controller
 
         ]);
 
-        return redirect()->route('mytodo');
-
+        // 共有ボタンがチェックされているかどうかでリダイレクト先変更
+        if ($isShared) {
+            return redirect()->route('share')->with([
+                'todoId' => $todo->id,
+                'title' => $request->title,
+                'content' => $request->content,
+                'image' => $imagePath,
+                'day' => $dayValue,
+            ]);
+        } else {
+            return redirect()->route('mytodo')->with([
+                'todoId' => $todo->id,
+                'title' => $request->title,
+                'content' => $request->content,
+                'image' => $imagePath,
+                'day' => $dayValue,
+            ]);
+        }
     
     }
+
+    public function share()
+    {
+    // $todos を取得するクエリを実行
+    $todos = Todo::with('user')->orderBy('created_at', 'desc')->get();
+    // $todos をビューに渡す
+    return view('share', compact('todos'));
+    }
+
+    // public function edit ($id)
+    // {
+    //     $todo = Todo::find($id);
+
+    //     return view('edit', compact('todo'));
+    // }
+
+//     public function show($id)
+// {
+//     $todo = Todo::findOrFail($id); // ToDo モデルに 'id' フィールドがあると仮定しています
+//     return view('detail', ['todo' => $todo]);
+// }
+    public function detail($id)
+    {
+        $todo = Todo::findOrFail($id);
+        return view('detail', ['todo' => $todo]);
+    }
+
+
 }

@@ -16,14 +16,10 @@
             </div>
             <div class="header-right">
                 <p class="weeklytodo">
-                    {{-- <a href="{{ route ('share') }}"> --}}
-                        Weekly To Do
-                    {{-- </a> --}}
+                    <a href="{{ route ('share') }}">Weekly To Do</a>
                 </p>
                 <p class="newcreate">
-                    {{-- <a href="{{ route ('create') }}"> --}}
-                    新規作成
-                    {{-- </a> --}}
+                    <a href="{{ route ('create') }}">新規作成</a>
                 </p>
     
             </div>
@@ -33,21 +29,17 @@
     <main>
         <fieldset class="mylist-box">
             <legend>My To Do</legend>
-            <div class="checkbox">
-                <input type="checkbox"/>
-                <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                報告書の提出</span>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox"/>
-                <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                会議資料の印刷</span>
-            </div>
+            @foreach($todos as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
         </fieldset>
     </main>
-
     {{-- <div class="todo-wrapper">
         @foreach ($todos as $todo)
             <div class="todo-box">
