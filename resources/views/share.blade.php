@@ -20,7 +20,7 @@
                     </a>
                 </p>
                 <p class="newcreate">
-                    {{-- <a href="{{ route ('create') }}"> --}}
+                    {{-- <a href="{{  }}"> --}}
                     新規作成
                     {{-- </a> --}}
                 </p>
@@ -32,131 +32,121 @@
         <div class="share-main">
             Weekly To Do
         </div>
+        {{-- <div>{{ $todo->title }}</div> --}}
         <fieldset class="share-box">
-            <div class="monday">
-                <legend>Monday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="tuesday">
-                <legend>Tuesday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="wednesday">
-                <legend>Wednesday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="thursday">
-                <legend>Thursday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="friday">
-                <legend>Friday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="saturday">
-                <legend>Saturday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="sunday">
-                <legend>Sunday</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
-            <div class="others">
-                <legend>Others</legend>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    あいうえお</span>
-                </div>
-                <div class="checkbox">
-                  <input type="checkbox"/>
-                  <span>
-                    {{-- <a href="{{ route ('detail') }}"></a> --}}
-                    かきくけこ</span>
-                </div>    
-            </div>
+          <div class="monday">
+            <legend>Monday</legend>
+        
+            @foreach($todos->where('day','monday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+          </div>
+          <div class="tuesday">
+            <legend>Tuesday</legend>
+        
+            @foreach($todos->where('day','tuesday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+          </div>
+          <div class="wednesday">
+            <legend>Wednesday</legend>
+            @foreach($todos->where('day','wednesday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+        
+            
+          </div>
+          <div class="thursday">
+            <legend>Thursday</legend>
 
-        </fieldset>
+            @foreach($todos->where('day','thursday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+        
+            
+          </div>
+          <div class="friday">
+            <legend>Friday</legend>
+        
+            @foreach($todos->where('day','friday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+          </div>
+          <div class="saturday">
+            <legend>Saturday</legend>
+        
+            @foreach($todos->where('day','saturday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+          </div>
+          <div class="sunday">
+            <legend>sunday</legend>
+        
+            @foreach($todos->where('day','sunday')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+
+          </div>
+          <div class="other">
+            <legend>Other</legend>
+        
+            @foreach($todos->where('day','other')->take(10) as $todo)
+                    <div class="checkbox">
+                        <input type="checkbox"/>
+                            <span>
+                                {{-- <a href="{{  }}"></a> --}}
+                                {{ $todo->title }}
+                            </span>
+                    </div>
+            @endforeach
+          </div>
+        
+          
+      </fieldset>
+      
           
     </main>
-    <script src="{{ asset ('js/share.js') }}"></script>
 </body>
 </html>
