@@ -1,46 +1,43 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TodoController;
-use App\Http\Controllers\HomeController;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+class CreateTodosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('todos', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->integer('user_id');
+            $table->string('image')->nullable(); //画像ファイル保存用カラム
+            $table->timestamps();
+            $table->boolean('share')->default(false); // 'share' カラムを boolean 型で作成
+            $table->string('day')->nullable(); // 'day' カラムを date 型で作成、nullable() は NULL 値を許可するため
+        
+        });
+        // マイグレーションファイルの修正
+        Schema::table('todos', function (Blueprint $table) {
+            $table->string('day')->change();
+        });
+        
+    }
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/mytodo', 'App\Http\Controllers\TodoController@mytodo')->name('mytodo');
-
-Route::get('/create', function () {
-    return view('create');
-});
-
-Route::post('/create', 'App\Http\Controllers\TodoController@store')->name('store');
-
-Route::get('/detail', function () {
-    return view('detail');
-});
-
-Route::get('/edit', function () {
-    return view('edit');
-});
-
-Route::get('/share', function () {
-    return view('share');
-});
-// Route::get('/share', 'App\Http\Controllers\TodoController@share')->name('share');
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('todos');
+    }
+}
