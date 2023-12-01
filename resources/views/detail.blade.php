@@ -14,27 +14,29 @@
                 <tbody class="detail-table">
                     <tr>
                         <th>タスク</th>
-                        <td>メールの返信</td>
+                        <td>{{ $todo->title }}</td>
                     </tr>
                     <tr>
                         <th>内容</th>
-                        <td>〇〇株式会社に〇〇が返信をする</td>
+                        <td>{{ $todo->content }}</td>
                     </tr>
                     <tr>
                         <th>写真</th>
-                        <td></td>
+                        <td><img src="{{ asset('images/' . $todo->image) }}" alt="Todo Image"></td>
                     </tr>
                     <tr>
                         <th>期限</th>
-                        <td>水</td>
+                        <td>{{ $todo->day }}</td>
                     </tr>
+                    {{-- <tr>
+                        <th>共有</th>
+                    </tr> --}}
                 </tbody>
             </table>
 
         </div>
         <button type="button" onclick="" class="edit-btn">編集</button>
         <button type="button" onclick="history.back()" class="delete-btn">削除</button>
-        {{-- ↓typeはsubmitかな？ --}}
         <button type="submit" onclick="" class="add-btn">Mytodoに追加</button>
         <button type="button" onclick="history.back()" class="return-btn">戻る</button>
     </div>

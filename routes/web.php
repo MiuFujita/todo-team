@@ -27,11 +27,17 @@ Route::get('/create', function () {
     return view('create');
 });
 
+Route::get('/create', 'App\Http\Controllers\TodoController@create')->name('create');
+
+
 Route::post('/create', 'App\Http\Controllers\TodoController@store')->name('store');
 
 Route::get('/detail', function () {
     return view('detail');
 });
+
+Route::get('/detail/{id}', 'App\Http\Controllers\TodoController@detail')->name('detail');
+
 
 Route::get('/edit', function () {
     return view('edit');
@@ -40,4 +46,11 @@ Route::get('/edit', function () {
 Route::get('/share', function () {
     return view('share');
 });
-// Route::get('/share', 'App\Http\Controllers\TodoController@share')->name('share');
+
+Route::get('/share', 'App\Http\Controllers\TodoController@share')->name('share');
+
+
+//             /mytodo?
+// Route::get('/todo/{id}', 'App\Http\Controllers\TodoController@show')->name('todo.show');
+
+// Route::get('/edit/{id}', 'App\Http\Controllers\TodoController@edit')->name('edit');

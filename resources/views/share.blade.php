@@ -11,7 +11,7 @@
     <header>
         <div class="header-text">
             <div class="header-left">
-                <p><a href="{{ route('home') }}">ToDoList</a></p>
+                <p>ToDoList</p>
             </div>
             <div class="header-right">
                 <p class="mytodo">
@@ -20,9 +20,7 @@
                     </a>
                 </p>
                 <p class="newcreate">
-                    {{-- <a href="{{  }}"> --}}
-                    新規作成
-                    {{-- </a> --}}
+                    <a href="{{ route ('create') }}">新規作成</a>
                 </p>
             </div>
         </div>
@@ -41,8 +39,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>                            
                             </span>
                     </div>
             @endforeach
@@ -54,8 +53,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>                            
                             </span>
                     </div>
             @endforeach
@@ -66,8 +66,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>           
                             </span>
                     </div>
             @endforeach
@@ -81,8 +82,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>                            
                             </span>
                     </div>
             @endforeach
@@ -96,8 +98,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>                            
                             </span>
                     </div>
             @endforeach
@@ -109,8 +112,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>
                             </span>
                     </div>
             @endforeach
@@ -122,8 +126,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>                           
                             </span>
                     </div>
             @endforeach
@@ -136,8 +141,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
+                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                 {{ $todo->title }}
+                              </a>                            
                             </span>
                     </div>
             @endforeach
@@ -148,5 +154,8 @@
       
           
     </main>
+
+    <script src="{{ asset ('js/share.js') }}"></script>
+
 </body>
 </html>

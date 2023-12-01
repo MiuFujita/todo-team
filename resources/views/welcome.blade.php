@@ -15,7 +15,7 @@
                         <div
                          class="top-text">
                             @auth
-                                <a href="{{ url('/home') }}" class="hometext">Home</a>
+                                <a href="{{ route('mytodo') }}" class="hometext">Home</a>
                             @else
                                 <a href="{{ route('login') }}" class="logintext">Log in</a>
         
