@@ -6,16 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data" id="todoForm">
     @csrf
     <div class="form-group">
         <label>タイトル</label>
-        <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title" maxlength="30">
+        <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title">
+        @error('title')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label>内容</label>
-        <textarea class="form-control" placeholder="内容" rows="3" name="content" maxlength="140">
+        <textarea class="form-control" placeholder="内容" rows="5" name="content">
         </textarea>
+        @error('content')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="image">写真</label>
@@ -30,12 +36,17 @@
         <input type="radio" name="day" value="friday">Friday
         <input type="radio" name="day" value="saturday">Saturday
         <input type="radio" name="day" value="sunday">Sunday
-        <input type="radio" name="day" value="Other">Other
+        <input type="radio" name="day" value="other">Other
+        @error('day')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group">
         <input type="checkbox" name="share" value="share">共有する
     </div>
     <button type="submit" class="btn btn-primary">作成</button>
     </form>
+
+    <script src="{{ asset ('js/create.js') }}"></script>
 </body>
 </html>
