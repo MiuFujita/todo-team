@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TodoController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +46,13 @@ Route::get('/edit', function () {
     return view('edit');
 });
 
+Route::get('/edit/{id}', 'App\Http\Controllers\TodoController@edit')->name('edit');
+
+Route::get('/todo/{id}/edit', 'App\Http\Controllers\TodoController@edit')->name('edit');
+Route::post('/todo/{id}/update', 'App\Http\Controllers\TodoController@update')->name('todo.update');
+
+
+
 Route::get('/share', function () {
     return view('share');
 });
@@ -50,7 +60,3 @@ Route::get('/share', function () {
 Route::get('/share', 'App\Http\Controllers\TodoController@share')->name('share');
 
 
-//             /mytodo?
-// Route::get('/todo/{id}', 'App\Http\Controllers\TodoController@show')->name('todo.show');
-
-// Route::get('/edit/{id}', 'App\Http\Controllers\TodoController@edit')->name('edit');

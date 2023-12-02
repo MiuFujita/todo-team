@@ -33,8 +33,9 @@
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                                {{-- <a href="{{  }}"></a> --}}
-                                {{ $todo->title }}
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }}
+                                </a>
                             </span>
                     </div>
             @endforeach

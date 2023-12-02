@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('edit', ['id' => $todo->id]) }}" method="POST">
+    <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label>タイトル</label>
