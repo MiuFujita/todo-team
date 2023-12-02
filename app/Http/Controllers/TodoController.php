@@ -131,11 +131,10 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=>'required',
-            'content'=>'required',
-            'day'=>'required',
-            'image'=>'image|mimes:jpeg,png,jpg,gif|max:2048',
-            //他に必要なバリデーションルールを追加
+            'title' => ['required','string','max:30'],
+            'content' => ['required','string','max:140'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'day' => ['required']
         ]);
 
         $todo = Todo::find($id);
@@ -147,11 +146,11 @@ class TodoController extends Controller
         if ($request->hasFile('image')) {
             // 古い画像が存在する場合、それを削除
             if ($todo->image) {
-                Storage::delete($todo->image);
+                Storage::delete('public/' . $todo->image);
             }
 
-            $imagePath = $request->file('image')->store('public/image');
-            $todo->image = $imagePath;
+            $imagePath = $request->file('image')->store('public/images');
+            $todo->image = 'images/' . basename($imagePath);
         }
 
         $todo->share = $request->has('share');
