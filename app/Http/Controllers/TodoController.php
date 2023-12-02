@@ -151,6 +151,10 @@ class TodoController extends Controller
 
             $imagePath = $request->file('image')->store('public/images');
             $todo->image = 'images/' . basename($imagePath);
+        }elseif ($request->has('remove_image')) {
+            //古い画像を削除する処理
+            Storage::delete('public/' . $todo->image);
+            $todo->image = null;
         }
 
         $todo->share = $request->has('share');
