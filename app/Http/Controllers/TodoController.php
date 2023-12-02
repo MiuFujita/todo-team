@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TodoController extends Controller
 {
@@ -131,11 +132,10 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=>'required',
-            'content'=>'required',
-            'day'=>'required',
-            'image'=>'image|mimes:jpeg,png,jpg,gif|max:2048',
-            //他に必要なバリデーションルールを追加
+            'title' => ['required','string','max:30'],
+            'content' => ['required','string','max:140'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'day' => ['required']
         ]);
 
         $todo = Todo::find($id);
@@ -147,11 +147,15 @@ class TodoController extends Controller
         if ($request->hasFile('image')) {
             // 古い画像が存在する場合、それを削除
             if ($todo->image) {
-                Storage::delete($todo->image);
+                Storage::delete('public/' . $todo->image);
             }
 
-            $imagePath = $request->file('image')->store('public/image');
-            $todo->image = $imagePath;
+            $imagePath = $request->file('image')->store('public/images');
+            $todo->image = 'images/' . basename($imagePath);
+        }elseif ($request->has('remove_image')) {
+            //古い画像を削除する処理
+            Storage::delete('public/' . $todo->image);
+            $todo->image = null;
         }
 
         $todo->share = $request->has('share');
@@ -172,5 +176,29 @@ class TodoController extends Controller
         }
     }
 
+    public function delete($id, Request $request)
+    {
+        // Todoレコードを検索
+        $todo = Todo::find($id);
 
+        // ユーザーがこのTodoを削除する権限があるか確認
+        if (auth()->check() && $todo && auth()->user()->id == $todo->user_id) {
+
+            // Todoを削除
+            $todo->delete();
+
+            $referer = $request->input('referer');
+
+            if (Str::contains($referer, 'mytodo')) {
+                return redirect()->route('mytodo');
+            } elseif (Str::contains($referer, 'share')) {
+                return redirect()->route('share');
+            } else {
+                // リファラーが不明な場合のデフォルトのリダイレクト
+                return redirect()->route('home');
+            }
+
+        }
+
+    }
 }

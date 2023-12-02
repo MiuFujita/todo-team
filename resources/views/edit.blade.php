@@ -21,7 +21,13 @@
         <input id="image" type="file" class="form-control" name="image" value="{{ $todo->image }}">
 
         @if($todo->image)
-          <img src="{{ asset('image/' . $todo->image) }}" alt="Todo Image">
+          <img src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image">
+            <label class="form-check-label" for="remove_image">
+                写真を削除する
+            </label>
+          </div>
         @endif
     </div>
     <div class="form-group">
