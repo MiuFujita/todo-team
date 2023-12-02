@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TodoController extends Controller
 {
@@ -175,5 +176,29 @@ class TodoController extends Controller
         }
     }
 
+    public function delete($id, Request $request)
+    {
+        // Todoレコードを検索
+        $todo = Todo::find($id);
 
+        // ユーザーがこのTodoを削除する権限があるか確認
+        if (auth()->check() && $todo && auth()->user()->id == $todo->user_id) {
+
+            // Todoを削除
+            $todo->delete();
+
+            $referer = $request->input('referer');
+
+            if (Str::contains($referer, 'mytodo')) {
+                return redirect()->route('mytodo');
+            } elseif (Str::contains($referer, 'share')) {
+                return redirect()->route('share');
+            } else {
+                // リファラーが不明な場合のデフォルトのリダイレクト
+                return redirect()->route('home');
+            }
+
+        }
+
+    }
 }

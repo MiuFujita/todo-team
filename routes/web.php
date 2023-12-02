@@ -60,3 +60,4 @@ Route::get('/share', function () {
 Route::get('/share', 'App\Http\Controllers\TodoController@share')->name('share');
 
 
+Route::delete('/todo/delete/{id}', 'App\Http\Controllers\TodoController@delete')->name('todo.delete');

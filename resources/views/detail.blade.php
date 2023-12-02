@@ -46,13 +46,16 @@
             </table>
 
         </div>
-        {{-- <button type="button" onclick="window.location='{{ route('edit', ['id' => $todo->id]) }}'" class="edit-btn">編集</button>
-        <button type="button" onclick="history.back()" class="delete-btn">削除</button>
-        <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button> --}}
         @if(Auth::check() && Auth::user()->id == $todo->user_id)
             <!-- 認証済みユーザーが投稿者の場合、編集ボタンと削除ボタンを表示 -->
             <button type="button" onclick="window.location='{{ route('edit', ['id' => $todo->id]) }}'" class="edit-btn">編集</button>
-            <button type="button" onclick="deleteTodo({{ $todo->id }})" class="delete-btn">削除</button>
+            {{-- <button type="button" onclick="deleteTodo({{ $todo->id }})" class="delete-btn">削除</button> --}}
+            <form method="post" action="{{ route('todo.delete', ['id' => $todo->id]) }}">
+                @csrf
+                @method('delete')
+                <input type="hidden" name="referer" value="{{ url()->previous() }}">
+                <button type="submit" class="delete-btn">削除</button>
+            </form>
         @endif
         <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button>
         <button type="button" onclick="history.back()" class="return-btn">戻る</button>
