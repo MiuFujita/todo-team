@@ -20,10 +20,21 @@
                         <th>内容</th>
                         <td>{{ $todo->content }}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th>写真</th>
                         <td><img src="{{ asset('images/' . $todo->image) }}" alt="Todo Image"></td>
+                    </tr> --}}
+                    @if($todo->image)
+                    <tr>
+                    <th>写真</th>
+                    <td><img src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image"></td>
                     </tr>
+                    @else
+                    <tr>
+                        <th>写真</th>
+                        <td>画像なし</td>
+                    </tr>
+                    @endif
                     <tr>
                         <th>期限</th>
                         <td>{{ $todo->day }}</td>
@@ -35,9 +46,15 @@
             </table>
 
         </div>
-        <button type="button" onclick="" class="edit-btn">編集</button>
+        {{-- <button type="button" onclick="window.location='{{ route('edit', ['id' => $todo->id]) }}'" class="edit-btn">編集</button>
         <button type="button" onclick="history.back()" class="delete-btn">削除</button>
-        <button type="submit" onclick="" class="add-btn">Mytodoに追加</button>
+        <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button> --}}
+        @if(Auth::check() && Auth::user()->id == $todo->user_id)
+            <!-- 認証済みユーザーが投稿者の場合、編集ボタンと削除ボタンを表示 -->
+            <button type="button" onclick="window.location='{{ route('edit', ['id' => $todo->id]) }}'" class="edit-btn">編集</button>
+            <button type="button" onclick="deleteTodo({{ $todo->id }})" class="delete-btn">削除</button>
+        @endif
+        <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button>
         <button type="button" onclick="history.back()" class="return-btn">戻る</button>
     </div>
 </body>
