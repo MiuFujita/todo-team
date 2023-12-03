@@ -11,7 +11,18 @@
     <header>
         <div class="header-text">
             <div class="header-left">
-                <p>ToDoList</p>
+                <p><a href="{{ route('home') }}">ToDoList</a></p>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </div>
             <div class="header-right">
                 <p class="mytodo">
@@ -30,47 +41,54 @@
         <div class="share-main">
             Weekly To Do
         </div>
-        {{-- <div>{{ $todo->title }}</div> --}}
         <fieldset class="share-box">
           <div class="monday">
             <legend>Monday</legend>
         
             @foreach($todos->where('day','monday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>                            
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a>  
                             </span>
                     </div>
+            @endif
             @endforeach
           </div>
           <div class="tuesday">
             <legend>Tuesday</legend>
         
             @foreach($todos->where('day','tuesday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>                            
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a>  
+                                
                             </span>
                     </div>
+            @endif
             @endforeach
           </div>
           <div class="wednesday">
             <legend>Wednesday</legend>
             @foreach($todos->where('day','wednesday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>           
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a>  
+                                
                             </span>
                     </div>
+            @endif
             @endforeach
         
             
@@ -79,14 +97,18 @@
             <legend>Thursday</legend>
 
             @foreach($todos->where('day','thursday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>                            
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a>  
+                                
+                               
                             </span>
                     </div>
+            @endif
             @endforeach
         
             
@@ -95,67 +117,88 @@
             <legend>Friday</legend>
         
             @foreach($todos->where('day','friday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>                            
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a>  
+                                
                             </span>
                     </div>
+            @endif
             @endforeach
           </div>
           <div class="saturday">
             <legend>Saturday</legend>
         
             @foreach($todos->where('day','saturday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a> 
+                                
+                                
                             </span>
                     </div>
+            @endif
             @endforeach
           </div>
           <div class="sunday">
-            <legend>sunday</legend>
+            <legend>Sunday</legend>
         
             @foreach($todos->where('day','sunday')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>                           
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a> 
+                                
                             </span>
                     </div>
+            @endif
             @endforeach
 
           </div>
           <div class="other">
             <legend>Other</legend>
+
+            {{-- デバッグコード --}}
+            {{-- @php
+            $otherTodos = $todos->where('day', 'other')->take(10)->toArray();
+            dd($otherTodos);
+            @endphp --}}
+
         
             @foreach($todos->where('day','other')->take(10) as $todo)
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox"/>
                             <span>
-                              <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                {{ $todo->title }}
-                              </a>                            
+                                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                </a>  
+                                
                             </span>
                     </div>
+            @endif
             @endforeach
+
           </div>
         
           
       </fieldset>
+
       
           
     </main>
 
     <script src="{{ asset ('js/share.js') }}"></script>
-
 </body>
 </html>
