@@ -42,8 +42,10 @@
         @enderror
     </div>
     <div class="form-group">
+        <input type="hidden" name="is_shared" value="{{ old('is_shared', session('isShared', false)) }}">
         <input type="checkbox" name="share" value="share">共有する
     </div>
+    
     <button type="submit" class="btn btn-primary">作成</button>
     </form>
 

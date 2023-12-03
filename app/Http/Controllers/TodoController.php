@@ -28,33 +28,17 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'title' => ['required','string','max:30'],
-        //     'content' => ['required','string','max:140'],
-        //     'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-        //     'day' => ['required'], // dayが必須であることを示す
-        // ]);
-
-        // if ($request->hasFile('image')){
-        //     //アップロードされた場合の処理
-        //     $image = $request->file('image');
-        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
-        //     $image->move(public_path('image'),$imageName);
-        //     $imagePath = 'images/' . $imageName;
-        // }else {
-        //     // 画像がアップロードされなかった場合
-        //     $imagePath = null;
-        // }
-
         $validatedData = $request->validate([
             'title' => ['required','string','max:30'],
             'content' => ['required','string','max:140'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'day' => ['required']
         ]);
+
         if ($request->has('share')) {
             $validatedData['day']= ['required'];
         }
+
         // 画像アップロード処理
         $imagePath = null;
         if ($request->hasFile('image')){
@@ -64,8 +48,9 @@ class TodoController extends Controller
             $imagePath = 'images/' . $imageName;
         }
 
-        $isShared = $request->has('share');
         $dayValue = $request->input('day');
+        $isShared = $request->input('share', false);
+        
 
         $todo = Todo::create([
             'user_id' => Auth::user()->id,
@@ -78,42 +63,27 @@ class TodoController extends Controller
         ]);
 
         // 共有ボタンがチェックされているかどうかでリダイレクト先変更
-        if ($isShared) {
-            return redirect()->route('share')->with([
-                'todoId' => $todo->id,
-                'title' => $request->title,
-                'content' => $request->content,
-                'image' => $imagePath,
-                'day' => $dayValue,
-            ]);
-        } else {
-            return redirect()->route('mytodo')->with([
-                'todoId' => $todo->id,
-                'title' => $request->title,
-                'content' => $request->content,
-                'image' => $imagePath,
-                'day' => $dayValue,
-            ]);
-        }
-    
+        return redirect()->route($isShared ? 'share' : 'mytodo', ['todoId' => $todo->id]);
     }
 
     public function share()
     {
-    // // $todos を取得するクエリを実行
-    // $todos = Todo::with('user')->orderBy('created_at', 'desc')->get();
-    // // $todos をビューに渡す
-    // return view('share', compact('todos'));
+        // $todos を取得するクエリを実行
+        $todos = Todo::with('user')->orderBy('created_at', 'desc')->get();
+    
+        // 'day' フィールドが "other" のデータを取得
+        $otherTodos = Todo::where('day', 'other')->get();
 
-    // $todos を取得するクエリを実行
-    $todos = Todo::with('user')->orderBy('created_at', 'desc')->get();
-    // 'day' フィールドが "other" のデータを取得
-    $otherTodos = Todo::where('day', 'other')->get();
-    // dd($otherTodos); // デバッグ出力を追加
-    // $todos に 'other' のデータを結合
-    $todos = $todos->merge($otherTodos);
-    // $todos をビューに渡す
-    return view('share', compact('todos'));
+        // $otherTodos の各要素の share フラグを false に設定
+        $otherTodos->each(function ($todo) {
+            $todo->share = false;
+        });
+
+        // $todos に 'other' のデータを結合
+        $todos = $todos->merge($otherTodos);
+
+        // $todos をビューに渡す
+        return view('share', compact('todos'));
     }
 
     public function edit ($id)
