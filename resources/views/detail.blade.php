@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset ('css/detail.css') }}">
+
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <div class="header-text">
+            <div class="header-left">
+                <p>ToDoList</p>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+            <div class="header-right">
+                <p class="cancel-btn">
+                    <a href="{{ route ('mytodo') }}">キャンセル</a>
+                </p>
+    
+            </div>
+        </div>
+    </header>
     <div class="wrapper">
         <div class="detail-box">
             {{-- thタグの中身は新規投稿と同じで --}}
@@ -15,6 +41,7 @@
                     <tr>
                         <th>タスク</th>
                         <td>{{ $todo->title }}</td>
+                        
                     </tr>
                     <tr>
                         <th>内容</th>
@@ -46,7 +73,8 @@
             </table>
 
         </div>
-
+    </div>
+    <div class="btn-index">
         @if(Auth::check())
         <!-- 認証済みユーザーの場合 -->
             @if(Auth::user()->id == $todo->user_id)
@@ -68,6 +96,11 @@
             @endif
         @endif
         <button type="button" onclick="history.back()" class="return-btn">戻る</button>
+        
+
     </div>
+
+
+    
 </body>
 </html>
