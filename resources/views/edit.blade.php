@@ -39,7 +39,7 @@
         <input type="radio" name="day" value="friday" {{ $todo->day == 'friday' ? 'checked' : '' }}>Friday
         <input type="radio" name="day" value="saturday" {{ $todo->day == 'saturday' ? 'checked' : '' }}>Saturday
         <input type="radio" name="day" value="sunday" {{ $todo->day == 'sunday' ? 'checked' : '' }}>Sunday
-        <input type="radio" name="day" value="Other" {{ $todo->day == 'other' ? 'checked' : '' }}>Other
+        <input type="radio" name="day" value="other" {{ $todo->day == 'other' ? 'checked' : '' }}>Other
     </div>
     <div class="form-group">
         <input type="checkbox" name="share" value="share" {{ $todo->share ? 'checked' : '' }}>共有する
