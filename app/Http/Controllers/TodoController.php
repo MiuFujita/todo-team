@@ -9,14 +9,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
 class TodoController extends Controller
 {
     //
     public function mytodo()
     {
-        $todos = Todo::with('user')->orderBy('created_at','desc')->get();
+        $userId = Auth::id();
+        $todos = Todo::where('user_id', $userId)
+
+        ->with('user')
+        ->orderBy('created_at', 'desc')
+        ->get();
         
-        // dd($tweets);
         return view('mytodo',['todos' => $todos]);
     }
 
@@ -146,7 +151,7 @@ class TodoController extends Controller
         }
     }
 
-    public function delete($id, Request $request)
+    public function delete(Request $request, $id)
     {
         // Todoレコードを検索
         $todo = Todo::find($id);
@@ -167,8 +172,20 @@ class TodoController extends Controller
                 // リファラーが不明な場合のデフォルトのリダイレクト
                 return redirect()->route('home');
             }
+            // $referer = $request->input('referer');
 
         }
 
+
     }
+
+    public function destroy($id) {
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+
+        return response()->json(['message' => 'ToDo deleted successfully']);
+
+
+    }
+
 }

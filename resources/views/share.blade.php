@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -48,7 +49,7 @@
             @foreach($todos->where('day','monday')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -64,7 +65,7 @@
             @foreach($todos->where('day','tuesday')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -80,7 +81,7 @@
             @foreach($todos->where('day','wednesday')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -99,7 +100,7 @@
             @foreach($todos->where('day','thursday')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -117,9 +118,9 @@
             <legend>Friday</legend>
         
             @foreach($todos->where('day','friday')->take(10) as $todo)
-            @if($todo->share)
+            @if($todo->share && $todo->day === 'other')
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -136,7 +137,7 @@
             @foreach($todos->where('day','saturday')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -154,7 +155,7 @@
             @foreach($todos->where('day','sunday')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
@@ -179,7 +180,7 @@
             @foreach($todos->where('day','other')->take(10) as $todo)
             @if($todo->share)
                     <div class="checkbox">
-                        <input type="checkbox"/>
+                        <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
                                     {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}

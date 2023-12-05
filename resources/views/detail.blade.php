@@ -46,18 +46,27 @@
             </table>
 
         </div>
-        @if(Auth::check() && Auth::user()->id == $todo->user_id)
-            <!-- 認証済みユーザーが投稿者の場合、編集ボタンと削除ボタンを表示 -->
-            <button type="button" onclick="window.location='{{ route('edit', ['id' => $todo->id]) }}'" class="edit-btn">編集</button>
-            {{-- <button type="button" onclick="deleteTodo({{ $todo->id }})" class="delete-btn">削除</button> --}}
-            <form method="post" action="{{ route('todo.delete', ['id' => $todo->id]) }}">
-                @csrf
-                @method('delete')
-                <input type="hidden" name="referer" value="{{ url()->previous() }}">
-                <button type="submit" class="delete-btn">削除</button>
-            </form>
+
+        @if(Auth::check())
+        <!-- 認証済みユーザーの場合 -->
+            @if(Auth::user()->id == $todo->user_id)
+                <!-- 投稿者の場合 -->
+                <!-- 編集ボタンや削除ボタンの表示 -->
+                <button type="button" class="edit-btn">編集</button>
+                <form method="post" action="{{ route('todo.delete', ['id' => $todo->id]) }}">
+                    @csrf
+                    @method('delete')
+                    <input type="hidden" name="referer" value="{{ url()->previous() }}">
+                    <button type="submit" class="delete-btn">削除</button>
+                </form>
+            @else
+                <!-- 投稿者でない場合 -->
+                @if($todo->share)
+                <!-- 共有されている場合のみ表示 -->
+                <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button>
+                @endif
+            @endif
         @endif
-        <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button>
         <button type="button" onclick="history.back()" class="return-btn">戻る</button>
     </div>
 </body>
