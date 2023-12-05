@@ -18,12 +18,50 @@ body {
     margin-left: 50px;
 }
 
-fieldset {
-    width: 50%;
-    border: none;
+.share-main{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.share-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: aquamarine;
+    height: 80vh;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;  */
+}
+
+legend{
+    text-align: center;
+    position: relative;
+
+}
+
+legend::before{
+    content:"";
+    position: absolute;
+    top:50%;
+    left:0;
+    right:0;
+    height: 1px;
+    /* width: 1px; */
+    background-color: gray;
+    transform: translateY(-50%);
+
+}
+
+.share-box > div{
+    flex: 0 1 25%;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .checkbox {
+    margin-left: 25%;
     display: flex;
     align-items: center;
     position: relative; /* 相対的な位置指定 */
@@ -34,7 +72,7 @@ fieldset {
     position: absolute; /* 絶対的な位置指定 */
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 75%;
     height: 1px; /* 下線の太さ */
     background-color: gray; /* 下線の色 */
 }
@@ -43,14 +81,14 @@ fieldset {
     text-align: center;
 }
 
-.share-box {
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-}
 
 .hidden {
     display: none;
+}
+
+span{
+    padding-left: 2%;
+}
+span > a{
+    text-decoration: none;
 }

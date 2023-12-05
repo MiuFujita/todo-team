@@ -1,0 +1,120 @@
+body{
+    padding: 0;
+    margin: 0;
+    height:100vh;
+    width:100vw;
+}
+
+header{
+    padding-bottom: 3%;
+}
+.header-text {
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cancel-btn {
+    margin-left: 50px;
+}
+
+.form-group{
+    width:100vw;
+    text-align: center;
+    justify-content: center;
+}
+
+/* タイトルのテキストボックス */
+.form-group input[type="text"].form-control {
+    width: 50vw; /* テキストボックスを親要素の幅いっぱいに広げる */
+    padding: 1%; /* テキストボックスの内側の余白 */
+}
+  
+  /* 内容のテキストエリア */
+  .form-group textarea.form-control {
+    width: 50vw; /* テキストエリアを親要素の幅いっぱいに広げる */
+    padding: 1%; /* テキストエリアの内側の余白 */
+    resize: vertical; /* テキストエリアの垂直リサイズを有効にする（横方向は無効） */
+}
+  
+  /* 写真のファイルアップロード */
+  .form-group input[type="file"].form-control {
+    width: 50vw; /* ファイルアップロードを親要素の幅いっぱいに広げる */
+    margin-top: 1%; /* ファイルアップロードと他の要素の間に上部の余白を追加 */
+    margin-bottom:1%;
+}
+  
+.form-group input[type="radio"]{
+    margin-left:1.8%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+label{
+    display: block;
+    margin:1%;
+    width:50vw;
+    margin-left: 1.5%;
+    font-weight: bold; /* 例: ラベルを太字にする */
+    
+}
+
+
+.form-control{
+    width:50%;
+    
+}
+
+.form-group input[type="radio"]{
+    /* ラジオボタンのサイズを変更 */
+    transform: scale(1.5); /* 例: 1.5倍に拡大 */
+    margin-right: 5px; /* 適切な間隔を設定 */
+}
+
+.text-danger {
+    /* エラーメッセージに対するスタイルを追加 */
+    color: red;
+  }
+
+.share-form{
+    padding-top: 1.5%;
+    display: block;
+    height:2%;
+    margin:1%;
+    width:50vw;
+    margin-left: 2%;
+    text-align: center;
+}
+.share-form input[type="hidden"],
+.share-form input[type="checkbox"] {
+    display: inline-block; /* インラインブロック要素として配置 */
+    vertical-align: middle; /* テキストと垂直方向に中央揃え */
+}
+
+.share-form input[type="checkbox"] {
+    margin-left:2% ;
+    margin-right:1.5%;
+    transform: scale(1.5); /* チェックボックスを元のサイズの1.5倍に拡大 */
+    /* 他のスタイルも追加可能 */
+}
+.share-form input[type="checkbox"]::before {
+    font-size: 24px; /* チェックマークのサイズを変更 */
+    /* 他のスタイルも追加可能 */
+}
+
+.create-btn{
+    padding-top: 2%;
+    width:100vw;
+    text-align: center;
+}
+
+.btn {
+    width:10%;
+    height:10%;
+    margin-bottom: 5%;
+}
