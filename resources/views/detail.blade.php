@@ -52,7 +52,7 @@
             @if(Auth::user()->id == $todo->user_id)
                 <!-- 投稿者の場合 -->
                 <!-- 編集ボタンや削除ボタンの表示 -->
-                <button type="button" class="edit-btn">編集</button>
+                <button type="button" onclick="window.location='{{ route('edit', ['id' => $todo->id]) }}'" class="edit-btn">編集</button>
                 <form method="post" action="{{ route('todo.delete', ['id' => $todo->id]) }}">
                     @csrf
                     @method('delete')
@@ -63,7 +63,7 @@
                 <!-- 投稿者でない場合 -->
                 @if($todo->share)
                 <!-- 共有されている場合のみ表示 -->
-                <button type="submit" onclick="addTomytodo({{ $todo->id }})" class="add-btn">Mytodoに追加</button>
+                <button type="submit" class="add-btn">Mytodoに追加</button>
                 @endif
             @endif
         @endif
