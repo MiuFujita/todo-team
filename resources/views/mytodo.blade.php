@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -41,7 +42,7 @@
         @foreach($todos as $todo)
             @if(!$todo->share)
                 <div class="checkbox">
-                    <input type="checkbox"/>
+                    <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                     <a href="{{ route('detail', ['id' => $todo->id]) }}">
                         {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
                     </a>
@@ -52,18 +53,6 @@
 
         </fieldset>
     </main>
-    
-            {{-- <div style="padding: 10px 40px">
-                @if($tweet->likedBy(Auth::user())->count() > 0)
-                <a href="/likes/{{ $tweet->likedBy(Auth::user())->firstOrfail()->id }}"><i class="fas fa-heart-broken"></i></a>
-                @else
-                <a href="/tweets/{{ $tweet->id }}/likes"><i class="far fa-heart"></a></i>
-                @endif
-                {{ $tweet->likes->count() }}
-            </div> --}}
-        {{-- @endforeach --}}
-        {{-- {{ $tweets->links() }} --}}
-    {{-- </div> --}}
     <script src="{{ asset ('js/mytodo.js') }}"></script>
     
 </body>

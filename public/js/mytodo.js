@@ -1,18 +1,35 @@
-// チェックボックスの要素を取得
-var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-// チェックボタンと内容を削除する関数
-function removeCheckboxAndContent(checkbox) {
-  // チェックボックスがチェックされているかどうかで削除切り替え
+// mytodo.js ファイル
+function destroyTodo(checkbox, destroyUrl) {
   if (checkbox.checked) {
-    checkbox.closest('.checkbox').remove(); // チェックボックスと内容を含む要素を削除
-  }
-}
+      var confirmation = confirm('ToDoを削除しますか？');
+      if (confirmation) {
+          var todoElement = checkbox.closest('.checkbox');
+          todoElement.parentNode.removeChild(todoElement);
 
-// 各チェックボックスに対応する削除処理を設定
-for (var i = 0; i < checkboxes.length; i++) {
-  var checkbox = checkboxes[i];
-  checkbox.addEventListener('change', function() {
-    removeCheckboxAndContent(this);
-  });
+          var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+          fetch(destroyUrl, {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': csrfToken,
+              },
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log(data);
+          })
+          .catch(error => {
+              console.error('There has been a problem with your fetch operation:', error);
+          });
+      } else {
+          checkbox.checked = false;
+      }
+  }
 }
