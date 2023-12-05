@@ -14,10 +14,17 @@ class TodoController extends Controller
     //
     public function mytodo()
     {
-        $todos = Todo::with('user')->orderBy('created_at','desc')->get();
+        // ログインユーザーのIDを取得
+        $userId = Auth::id();
+
+        // ログインユーザーに関連するタスクを取得
+        $todos = Todo::where('user_id', $userId)
         
-        // dd($tweets);
-        return view('mytodo',['todos' => $todos]);
+        ->with('user') // 必要に応じてユーザーリレーションを取得
+        ->orderBy('created_at', 'desc')
+        ->get();
+        
+        return view('mytodo', ['todos' => $todos]);
     }
 
     public function create()
