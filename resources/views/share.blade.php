@@ -118,7 +118,7 @@
             <legend>Friday</legend>
         
             @foreach($todos->where('day','friday')->take(10) as $todo)
-            @if($todo->share && $todo->day === 'other')
+            @if($todo->share)
                     <div class="checkbox">
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
@@ -178,7 +178,7 @@
 
         
             @foreach($todos->where('day','other')->take(10) as $todo)
-            @if($todo->share)
+            @if($todo->share && $todo->day === 'other')
                     <div class="checkbox">
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
