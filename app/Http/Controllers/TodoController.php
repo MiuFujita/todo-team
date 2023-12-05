@@ -171,4 +171,14 @@ class TodoController extends Controller
         }
 
     }
+
+    public function destroy($id) {
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+
+        return response()->json(['message' => 'ToDo deleted successfully']);
+
+
+    }
+
 }
