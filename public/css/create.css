@@ -8,25 +8,43 @@ body{
 header{
     padding-bottom: 3%;
 }
+
 .header-text {
-    background-color: aquamarine;
+    background-color: rgba(210, 210, 210, 0.444);
     display: flex;
     justify-content: space-around;
 }
 
+.header-left > p {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
 .header-right {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
 }
 
 .cancel-btn {
     margin-left: 50px;
 }
 
+.cancel-btn > a {
+    text-decoration: none;
+    color: black;
+}
+
 .form-group{
     width:100vw;
     text-align: center;
     justify-content: center;
+}
+
+@media screen and (max-width: 700px) {
+    .form-group {
+        margin-top: 7%;
+    }
 }
 
 /* タイトルのテキストボックス */
@@ -57,13 +75,18 @@ header{
 
 label{
     display: block;
-    margin:1%;
+    margin: 1%;
     width:50vw;
     margin-left: 1.5%;
     font-weight: bold; /* 例: ラベルを太字にする */
-    
 }
 
+@media screen and (max-width: 700px) {
+    label {
+        text-align: left;
+        margin-left: 30px;
+    }
+}
 
 .form-control{
     width:50%;
@@ -74,6 +97,13 @@ label{
     /* ラジオボタンのサイズを変更 */
     transform: scale(1.5); /* 例: 1.5倍に拡大 */
     margin-right: 5px; /* 適切な間隔を設定 */
+}
+
+@media screen and (max-width: 700px) {
+    .day {
+        margin: 0 10%;
+        line-height: 200%;
+    }
 }
 
 .text-danger {
@@ -90,6 +120,17 @@ label{
     margin-left: 2%;
     text-align: center;
 }
+
+@media screen and (max-width: 700px) {
+    .share-form {
+        text-align: left;
+        margin-left: 30px;
+        margin-top: 7%;
+        display: flex;
+        align-items: center;
+    }
+}
+
 .share-form input[type="hidden"],
 .share-form input[type="checkbox"] {
     display: inline-block; /* インラインブロック要素として配置 */
@@ -98,7 +139,7 @@ label{
 
 .share-form input[type="checkbox"] {
     margin-left:2% ;
-    margin-right:1.5%;
+    margin-right:10px;
     transform: scale(1.5); /* チェックボックスを元のサイズの1.5倍に拡大 */
     /* 他のスタイルも追加可能 */
 }
@@ -117,4 +158,57 @@ label{
     width:10%;
     height:10%;
     margin-bottom: 5%;
+}
+
+@media screen and (max-width: 700px) {
+    .btn {
+        width: 15%;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .homeicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .shareicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .createicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .logouticon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff; /* フッターの背景色（必要に応じて変更） */
+        border-top: 1px solid #ccc; /* フッターの上部ボーダー（必要に応じて変更） */
+        padding: 10px; /* フッター内の余白（必要に応じて変更） */
+    }
+}
+    
+footer > div > a > i {
+    color: black;
+}
+
+.text-danger {
+    text-align: left;
+    margin-left: 25%;
 }

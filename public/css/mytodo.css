@@ -4,18 +4,62 @@ body {
 }
 
 .header-text {
-    background-color: aquamarine;
+    background-color: rgba(210, 210, 210, 0.444);
     display: flex;
     justify-content: space-around;
+}
+
+.header-left > p {
+    font-size: 30px;
+    margin: 10px 0;
 }
 
 .header-right {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.weeklytodo > a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 700px) {
+    .weeklytodo > a {
+        display: none;
+    }
 }
 
 .newcreate {
     margin-left: 50px;
+}
+
+.newcreate > a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 700px) {
+    .newcreate > a {
+        display: none;
+    }
+}
+
+.dropdown-menu {
+    margin-left: 50px;
+}
+
+.dropdown-menu > a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 700px) {
+    .dropdown-menu > a {
+        display: none;
+    }
 }
 
 fieldset {
@@ -23,7 +67,20 @@ fieldset {
     border: none;
 }
 
+.mylist-box {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+}
+
+legend {
+    text-align: center;
+    font-size: 24px;
+}
+
 .checkbox {
+    text-align: center;
     display: flex;
     align-items: center;
     position: relative; /* 相対的な位置指定 */
@@ -39,15 +96,50 @@ fieldset {
     background-color: gray; /* 下線の色 */
 }
 
-.mylist-box {
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
+.checkbox > a {
+    text-decoration: none;
+    color: black;
+    line-height: 300%;
 }
 
-legend {
-    text-align: center;
-    font-size: 24px;
+@media screen and (min-width: 701px) {
+    .homeicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .shareicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .createicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .logouticon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff; /* フッターの背景色（必要に応じて変更） */
+        border-top: 1px solid #ccc; /* フッターの上部ボーダー（必要に応じて変更） */
+        padding: 10px; /* フッター内の余白（必要に応じて変更） */
+    }
+}
+
+footer > div > a > i {
+    color: black;
 }

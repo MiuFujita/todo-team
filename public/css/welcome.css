@@ -7,6 +7,36 @@ body {
     padding: 0;
 }
 
+@media screen and (max-width: 700px) {
+    body {
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5); /* 白い背景色（最後の数値は透明度） */
+        z-index: -1; /* フィルターを背面に配置 */
+    }
+
+    body::after {
+        content: "";
+        background: url(../image/welcome-top2.jpg) no-repeat center;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2; /* 画像を最背面に配置 */
+    }
+}
+
+
 .top-page {
     margin: 0;
     text-align: center;
@@ -24,24 +54,83 @@ body {
     margin-bottom: 5%;
 }
 
-.top-text > .logintext {
+@media screen and (max-width: 700px) {
+    .title {
+        font-size: 70px;
+        margin-bottom: 10%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .top-text {
+        margin-bottom: 30%;
+    }
+}
+
+.hometext {
     font-size: 20px;
     margin-right: 50px;
     padding: 10px 20px;
     text-decoration: none;
     border: solid 2px gray;
-    border-radius: 20px;
+    border-radius: 30px;
     color: gray;
     font-weight: bold;
 }
 
-.top-text > .registertext {
+@media screen and (max-width: 700px) {
+    .hometext {
+        margin-right: 20px;
+    }
+}
+
+.dropdown-item {
     font-size: 20px;
     margin-left: 50px;
     padding: 10px 20px;
     text-decoration: none;
     border: solid 2px gray;
-    border-radius: 20px;
+    border-radius: 30px;
     color: gray;
     font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+    .dropdown-item {
+        margin-left: 20px;
+    }
+}
+
+.logintext {
+    font-size: 20px;
+    margin-right: 50px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: solid 2px gray;
+    border-radius: 30px;
+    color: gray;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+    .logintext {
+        margin-right: 20px;
+    }
+}
+
+.registertext {
+    font-size: 20px;
+    margin-left: 50px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: solid 2px gray;
+    border-radius: 30px;
+    color: gray;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+    .registertext {
+        margin-left: 20px;
+    }
 }
