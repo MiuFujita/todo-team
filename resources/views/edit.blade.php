@@ -46,12 +46,12 @@
             <input id="image" type="file" class="form-control" name="image" value="{{ $todo->image }}" onchange="previewImage(this)">
 
             @if($todo->image)
-            <img id="image-preview" src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image">
+            <img id="image-preview" src="{{ asset('storage/' . $todo->image) }}" alt="" style="max-width: 100%; max-height: 200px;">
                 <div class="form-check" id="image-delete">
                     <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image"> 写真を削除する
                 </div>
             @else
-            <img id="image-preview" src="" alt="">
+            <img id="image-preview" src="" alt="" style="max-width: 100%; max-height: 200px;">
             @endif
         </div>
         {{-- <div class="form-group">
