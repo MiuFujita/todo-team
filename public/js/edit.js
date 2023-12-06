@@ -25,3 +25,4 @@ function validateForm(event) {
 document.getElementById('todoForm').addEventListener('submit', function(event) {
     validateForm(event);
 });
+

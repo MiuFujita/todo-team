@@ -22,8 +22,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset ('css/detail.css') }}">
+    <link rel="stylesheet" href="{{ asset ('css/lightbox.css') }}">
     <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
-
 
     <title>ToDoList</title>
 </head>
@@ -52,8 +52,8 @@
                         </tr>
                         @if($todo->image)
                         <tr>
-                        <th>写真</th>
-                        <td><img src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image"></td>
+                            <th>写真</th>
+                            <td><a href="{{ asset('storage/' . $todo->image) }}" data-lightbox="todo-gallery" data-title="Todo Image"><img src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image"></a></td>
                         </tr>
                         @else
                         <tr>
@@ -119,6 +119,13 @@
             </form>
         </div>
     </footer>
-
+    <script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        });
+    </script>
+    
 </body>
 </html>

@@ -57,14 +57,14 @@ td{
     justify-content: center; */
 }
 
-td > img{
+td > a > img{
     height:250px;
     width:400px;
     /* float:center; */
 }
 
 @media screen and (max-width: 700px) {
-    td > img {
+    td > a > img {
     height: 250px;
     max-width: 100%; /* 幅が親要素を超えないようにする */
     display: block;
