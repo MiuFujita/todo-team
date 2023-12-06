@@ -3,6 +3,7 @@ body{
     margin: 0;
     height:100vh;
     width:100vw;
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 header{
@@ -24,6 +25,12 @@ header{
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+    main {
+        padding-bottom: 50px;
+    }
 }
 
 .wrapper{
@@ -85,6 +92,22 @@ td > a > img{
     .btn-index {
         margin-top: 10%;
     }
+}
+
+.return-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.edit-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.delete-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.add-btn {
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 @media screen and (min-width: 701px) {

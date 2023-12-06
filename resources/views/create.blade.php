@@ -6,24 +6,15 @@
     <title>ToDoList</title>
     <link rel="stylesheet" href="{{ asset ('css/create.css') }}">
     <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header-text">
             <div class="header-left">
                 <p>ToDoList</p>
-                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div> --}}
             </div>
             <div class="header-right">
                 <p class="cancel-btn">
@@ -53,6 +44,7 @@
         <div class="form-group">
             <label for="image">写真</label>
             <input id="image" type="file" class="form-control" name="image">
+            <img id="previewImage" style="max-width: 100%; max-height: 200px;">
         </div>
         <div class="form-group">
             <label>期限</label>

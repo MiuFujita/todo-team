@@ -6,7 +6,9 @@
     <title>ToDoList</title>
     <link rel="stylesheet" href="{{ asset ('css/edit.css') }}">
     <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,7 +25,7 @@
         </div>
     </header>
     <main>
-        <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="POST" enctype="multipart/form-data">
+        <form id="todoForm" action="{{ route('todo.update', ['id' => $todo->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>タイトル</label>
@@ -41,15 +43,30 @@
         </div>
         <div class="form-group">
             <label for="image">写真</label>
-            <input id="image" type="file" class="form-control" name="image" value="{{ $todo->image }}">
+            <input id="image" type="file" class="form-control" name="image" value="{{ $todo->image }}" onchange="previewImage(this)">
 
             @if($todo->image)
-            <img src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image">
+            <img id="image-preview" src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image">
                 <div class="form-check" id="image-delete">
                     <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image"> 写真を削除する
                 </div>
+            @else
+            <img id="image-preview" src="" alt="">
             @endif
         </div>
+        {{-- <div class="form-group">
+            <label for="image">写真</label>
+            <input id="image" type="file" class="form-control" name="image" value="{{ $todo->image }}" onchange="previewImage(this)">
+        
+            @if($todo->image)
+                <img id="image-preview" src="{{ asset('storage/' . $todo->image) }}" alt="Todo Image">
+                <div class="form-check" id="image-delete">
+                    <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image"> 写真を削除する
+                </div>
+            @else
+                <img id="image-preview" src="" alt="Todo Image" style="display: none;">
+            @endif
+        </div> --}}
         <div class="form-group">
             <label>期限</label>
             <div class="day">
@@ -96,6 +113,6 @@
             </form>
         </div>
     </footer>
-
+    <script src="{{ asset ('js/edit.js') }}"></script>
 </body>
 </html>

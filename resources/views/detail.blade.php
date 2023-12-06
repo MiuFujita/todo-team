@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="{{ asset ('css/detail.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/lightbox.css') }}">
     <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
     <title>ToDoList</title>
 </head>
 <body>

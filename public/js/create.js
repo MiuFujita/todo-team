@@ -25,3 +25,22 @@ function validateForm(event) {
 document.getElementById('todoForm').addEventListener('submit', function(event) {
     validateForm(event);
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the file input and image element
+    const fileInput = document.getElementById('image');
+    const previewImage = document.getElementById('previewImage');
+    // Add an event listener to the file input
+    fileInput.addEventListener('change', function () {
+        // Check if a file is selected
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            // Read the file and set the src attribute when loaded
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+            };
+            // Read the selected file as a data URL
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    });
+});

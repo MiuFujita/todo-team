@@ -26,3 +26,38 @@ document.getElementById('todoForm').addEventListener('submit', function(event) {
     validateForm(event);
 });
 
+// 新しい画像のプレビュー機能を追加
+function previewImage(input) {
+    var preview = document.getElementById('image-preview');
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+}
+
+// フォームのsubmitイベントに対してvalidateForm関数を紐付ける
+document.getElementById('todoForm').addEventListener('submit', function(event) {
+    validateForm(event);
+});
+
+// 新しい画像の選択が変更されたときにプレビュー機能を呼び出す
+var imageInput = document.getElementById('image');
+if (imageInput) {
+    imageInput.addEventListener('change', function() {
+        previewImage(this);
+    });
+}
+
+// windowのloadイベントリスナー内に全てのコードを配置する
+window.addEventListener('load', function() {
+    // function validateForm...
+    // ...
+});

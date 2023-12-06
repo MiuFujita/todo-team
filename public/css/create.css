@@ -3,6 +3,7 @@ body{
     margin: 0;
     height:100vh;
     width:100vw;
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 header{
@@ -33,6 +34,12 @@ header{
 .cancel-btn > a {
     text-decoration: none;
     color: black;
+}
+
+@media screen and (max-width: 700px) {
+    main {
+        padding-bottom: 50px;
+    }
 }
 
 .form-group{
@@ -73,7 +80,12 @@ header{
     margin-bottom: 1%;
 }
 
+.form-group input[type="file"] {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
 label{
+    font-size: larger;
     display: block;
     margin: 1%;
     width:50vw;
@@ -86,6 +98,10 @@ label{
         text-align: left;
         margin-left: 30px;
     }
+}
+
+.form-control {
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 .form-control{
@@ -109,7 +125,22 @@ label{
 .text-danger {
     /* エラーメッセージに対するスタイルを追加 */
     color: red;
-  }
+}
+
+.form-group > img {
+    height: 250px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto; 
+}
+
+
+.image-content > img {
+    margin-left: 40%;
+    height:40%;
+    width:40%;
+    float:center;
+}
 
 .share-form{
     padding-top: 1.5%;
@@ -148,6 +179,10 @@ label{
     /* 他のスタイルも追加可能 */
 }
 
+.form-group {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
 .create-btn{
     padding-top: 2%;
     width:100vw;
@@ -158,6 +193,7 @@ label{
     width:10%;
     height:10%;
     margin-bottom: 5%;
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 @media screen and (max-width: 700px) {
@@ -211,4 +247,8 @@ footer > div > a > i {
 .text-danger {
     text-align: left;
     margin-left: 25%;
+}
+
+#file-upload-button {
+    font-family: 'Yusei Magic', sans-serif;
 }

@@ -8,7 +8,9 @@
     <title>ToDoList</title>
     <link rel="stylesheet" href="{{ asset ('css/share.css') }}">
     <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 <body>
     <header>
         <div class="header-text">
@@ -54,7 +56,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                             </span>
                             
@@ -71,7 +74,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                             </span>
                     </div>
@@ -86,7 +90,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                             </span>
                     </div>
@@ -104,7 +109,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                             </span>
                     </div>
@@ -122,7 +128,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                             </span>
                     </div>
@@ -138,7 +145,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a> 
                             </span>
                     </div>
@@ -154,7 +162,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a> 
                                 
                             </span>
@@ -179,7 +188,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                                 
                             </span>
