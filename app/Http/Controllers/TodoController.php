@@ -40,6 +40,9 @@ class TodoController extends Controller
             'content' => ['required','string','max:140'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'day' => ['required']
+        ],[
+            'title.max'=> '30文字以内で入力してください。',
+            'body.max'=> '140文字以内で入力してください。',
         ]);
 
         if ($request->has('share')) {
@@ -113,6 +116,9 @@ class TodoController extends Controller
             'content' => ['required','string','max:140'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'day' => ['required']
+        ],[
+            'title.max'=> '30文字以内で入力してください。',
+            'body.max'=> '140文字以内で入力してください。',
         ]);
 
         $todo = Todo::find($id);

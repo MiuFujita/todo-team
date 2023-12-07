@@ -32,7 +32,7 @@
             <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title" value="{{ $todo->title }}">
             @error('title')
             <div class="text-danger" style="color: red;">{{ $message }}</div>
-        @enderror
+            @enderror
         </div>
         <div class="form-group">
             <label>内容</label>
