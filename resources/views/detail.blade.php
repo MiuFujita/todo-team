@@ -27,6 +27,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>ToDoList</title>
 </head>
 <body>
@@ -90,13 +92,29 @@
                 @else
                     <!-- 投稿者でない場合 -->
                     @if($todo->share)
-                    <!-- 共有されている場合のみ表示 -->
-                    <button type="submit" onclick="window.location='{{ route('mytodo') }}" class="add-btn">Mytodoに追加</button>
+                        @php
+                        // Mytodoに追加されているかどうかの判定
+                        $isAddedToMytodo = \App\Models\Add::where('todo_id', $todo->id)
+                        ->where('user_id', Auth::user()->id)
+                        ->exists();
+                        @endphp
+                        @if($isAddedToMytodo)
+                        <form method="post" action="{{ route('todo.remove', ['todo_id' => $todo->id]) }}">
+                            @csrf
+                            @method('delete')
+                            <input type="hidden" name="todo_id" value="{{ $todo->id }}">
+                            <button type="submit" class="remove-btn">Mytodoから解除</button>
+                        </form>
+                        @else
+                        <form method="post" action="{{ route('todo.add.post', ['todo_id' => $todo->id]) }}">
+                            @csrf
+                            <input type="hidden" name="todo_id" value="{{ $todo->id }}">
+                            <button type="submit" class="add-btn">Mytodoに追加</button>
+                        </form>
+                        @endif
                     @endif
                 @endif
             @endif
-            
-
         </div>
     </main>
 

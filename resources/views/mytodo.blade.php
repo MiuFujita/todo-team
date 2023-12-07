@@ -46,21 +46,37 @@
     </header>
     <main>
         <fieldset class="mylist-box">
-        <legend>My To Do</legend>
-        @foreach($todos as $todo)
-            @if(!$todo->share)
+            <legend>share my todo</legend>
+            @if(isset($adds))
+                @foreach($adds as $add)
+                <!-- ここで $adds のデータを使用 -->
                 <div class="checkbox">
-                    <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
-                    <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                        {{ $todo->title }} 
-                        {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
+                    <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ route('add.destroy', ['id' => $add->todo_id]) }}')"/>
+                    <a href="{{ route('detail', ['id' => $add->todo_id]) }}">
+                        {{ $add->todo->title }}
                     </a>
-                    {{-- 他のデータの表示ロジックを追加 --}}
-                </div>
-            @endif
-        @endforeach
 
+                </div> 
+                @endforeach
+            @endif
         </fieldset>
+        <fieldset class="mylist-box">
+            <legend>My To Do</legend>
+            @if(isset($todos))
+            @foreach($todos as $todo)
+            <!-- ここで $todos のデータを使用 -->
+            @if(!$todo->share)
+            <div class="checkbox">
+                <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
+                <a href="{{ route('detail', ['id' => $todo->id]) }}">
+                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                </a>
+            </div>
+            @endif
+            @endforeach
+            @endif
+        </fieldset>
+        
     </main>
     <script src="{{ asset ('js/mytodo.js') }}"></script>
     
