@@ -46,9 +46,10 @@
     </header>
     <main>
         <fieldset class="mylist-box">
-            <legend>share my todo</legend>
             @if(isset($adds))
                 @foreach($adds as $add)
+                <legend>Share My Todo</legend>
+
                 <!-- ここで $adds のデータを使用 -->
                 <div class="checkbox">
                     <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ route('add.destroy', ['id' => $add->todo_id]) }}')"/>
