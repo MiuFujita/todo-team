@@ -69,7 +69,7 @@
             <div class="checkbox">
                 <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                    {{ $todo->title }} 
                 </a>
             </div>
             @endif
