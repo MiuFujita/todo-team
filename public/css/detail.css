@@ -3,24 +3,34 @@ body{
     margin: 0;
     height:100vh;
     width:100vw;
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 header{
     padding-bottom: 3%;
 }
+
 .header-text {
-    background-color: aquamarine;
+    background-color: rgba(210, 210, 210, 0.444);
     display: flex;
     justify-content: space-around;
+}
+
+.header-left > p {
+    font-size: 30px;
+    margin: 10px 0;
 }
 
 .header-right {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
 }
 
-.cancel-btn {
-    /* margin-left: 50px; */
+@media screen and (max-width: 700px) {
+    main {
+        padding-bottom: 50px;
+    }
 }
 
 .wrapper{
@@ -42,16 +52,33 @@ th{
     float:right;
 }
 
+@media screen and (max-width: 700px) {
+    th {
+        text-align: left;
+        padding-left: 10%;
+    }
+}
+
 td{
     /* text-align: center;
     justify-content: center; */
-
 }
-td > img{
+
+td > a > img{
     height:250px;
     width:400px;
     /* float:center; */
 }
+
+@media screen and (max-width: 700px) {
+    td > a > img {
+    height: 250px;
+    max-width: 100%; /* 幅が親要素を超えないようにする */
+    display: block;
+    margin: 0 auto; /* 中央揃え */
+    }
+}
+
 .btn-index{
     display: flex;
     justify-content: space-around;
@@ -59,4 +86,68 @@ td > img{
     text-align: center;
     padding-left: 25%;
     padding-top: 2%;
+}
+
+@media screen and (max-width: 700px) {
+    .btn-index {
+        margin-top: 10%;
+    }
+}
+
+.return-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.edit-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.delete-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.add-btn {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+@media screen and (min-width: 701px) {
+    .homeicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .shareicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .createicon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .logouticon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff; /* フッターの背景色（必要に応じて変更） */
+        border-top: 1px solid #ccc; /* フッターの上部ボーダー（必要に応じて変更） */
+        padding: 10px; /* フッター内の余白（必要に応じて変更） */
+    }
+}
+
+footer > div > a > i {
+    color: black;
 }

@@ -6,16 +6,26 @@
 
         <title>ToDoList</title>
         <link rel="stylesheet" href="{{ asset ('css/welcome.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">    
     </head>
     <body class="antialiased">
         <div class="top-page">
             <h1 class="title">ToDoList</h1>
                     {{-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0"> --}}
                         @if (Route::has('login'))
-                        <div
-                         class="top-text">
+                        <div class="top-text">
                             @auth
-                                <a href="{{ route('mytodo') }}" class="hometext">Home</a>
+                                <a href="{{ route('mytodo') }}" class="hometext">Mypage</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>                
                             @else
                                 <a href="{{ route('login') }}" class="logintext">Log in</a>
         

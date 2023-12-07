@@ -5,14 +5,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ToDoList</title>
     <link rel="stylesheet" href="{{ asset ('css/share.css') }}">
-</head>
+    <link href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 <body>
     <header>
         <div class="header-text">
             <div class="header-left">
-                <p><a href="{{ route('home') }}">ToDoList</a></p>
+                <p>ToDoList</p>
+            </div>
+            <div class="header-right">
+                <div class="mytodo">
+                    <a href="{{ route ('mytodo') }}">
+                        My To Do
+                    </a>
+                </div>
+                <div class="newcreate">
+                    <a href="{{ route ('create') }}">新規作成</a>
+                </div>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -24,16 +37,7 @@
                         @csrf
                     </form>
                 </div>
-            </div>
-            <div class="header-right">
-                <p class="mytodo">
-                    <a href="{{ route ('mytodo') }}">
-                        My To Do
-                    </a>
-                </p>
-                <p class="newcreate">
-                    <a href="{{ route ('create') }}">新規作成</a>
-                </p>
+
             </div>
         </div>
     </header>
@@ -52,9 +56,11 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                             </span>
+                            
                     </div>
             @endif
             @endforeach
@@ -68,9 +74,9 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
-                                
                             </span>
                     </div>
             @endif
@@ -84,9 +90,9 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
-                                
                             </span>
                     </div>
             @endif
@@ -103,10 +109,9 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
-                                
-                               
                             </span>
                     </div>
             @endif
@@ -123,9 +128,9 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
-                                
                             </span>
                     </div>
             @endif
@@ -140,10 +145,9 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a> 
-                                
-                                
                             </span>
                     </div>
             @endif
@@ -158,7 +162,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a> 
                                 
                             </span>
@@ -183,7 +188,8 @@
                         <input type="checkbox" onclick="destroyTodo(this, '{{ route('todo.destroy' , ['id' => $todo->id]) }}')"/>
                             <span>
                                 <a href="{{ route('detail', ['id' => $todo->id]) }}">
-                                    {{ $todo->title }} - {{ $todo->share ? 'Shared' : 'Not Shared' }}
+                                    {{ $todo->title }} 
+                                    {{-- - {{ $todo->share ? 'Shared' : 'Not Shared' }} --}}
                                 </a>  
                                 
                             </span>
@@ -200,6 +206,32 @@
           
     </main>
 
+    <footer>
+        <div class="footer">
+            <div class="homeicon">
+                <a href="{{ route('mytodo') }}"><i class="fa-regular fa-user" style="font-size: 1.5em;"></i></a>
+            </div>
+            <div class="shareicon">
+                <a href="{{ route('share') }}"><i class="fa-solid fa-calendar" style="font-size: 1.5em;"></i></a>
+            </div>
+            <div class="createicon">
+                <a href="{{ route('create') }}"><i class="fa-regular fa-square-plus" style="font-size: 1.5em;"></i></a>
+            </div>
+            <div class="logouticon dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    <i class="fa-solid fa-right-from-bracket" style="font-size: 1.5em;"></i>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>    
+        </div>
+    </footer>
+
+
     <script src="{{ asset ('js/share.js') }}"></script>
 </body>
+
 </html>

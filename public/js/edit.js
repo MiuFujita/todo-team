@@ -26,21 +26,38 @@ document.getElementById('todoForm').addEventListener('submit', function(event) {
     validateForm(event);
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the file input and image element
-    const fileInput = document.getElementById('image');
-    const previewImage = document.getElementById('previewImage');
-    // Add an event listener to the file input
-    fileInput.addEventListener('change', function () {
-        // Check if a file is selected
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            // Read the file and set the src attribute when loaded
-            reader.onload = function (e) {
-                previewImage.src = e.target.result;
-            };
-            // Read the selected file as a data URL
-            reader.readAsDataURL(fileInput.files[0]);
-        }
+// 新しい画像のプレビュー機能を追加
+function previewImage(input) {
+    var preview = document.getElementById('image-preview');
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+}
+
+// フォームのsubmitイベントに対してvalidateForm関数を紐付ける
+document.getElementById('todoForm').addEventListener('submit', function(event) {
+    validateForm(event);
+});
+
+// 新しい画像の選択が変更されたときにプレビュー機能を呼び出す
+var imageInput = document.getElementById('image');
+if (imageInput) {
+    imageInput.addEventListener('change', function() {
+        previewImage(this);
     });
+}
+
+// windowのloadイベントリスナー内に全てのコードを配置する
+window.addEventListener('load', function() {
+    // function validateForm...
+    // ...
 });
