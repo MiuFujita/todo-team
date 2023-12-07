@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\Add;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,8 +24,13 @@ class TodoController extends Controller
         ->with('user') // 必要に応じてユーザーリレーションを取得
         ->orderBy('created_at', 'desc')
         ->get();
-        
-        return view('mytodo', ['todos' => $todos]);
+
+        // AddController からデータを取得
+       $adds = Add::all();
+       
+       // ビューにデータを渡す
+       return view('mytodo', ['todos' => $todos, 'adds' => $adds]); 
+       
     }
 
     public function create()
