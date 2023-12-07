@@ -52,7 +52,7 @@
 
                 <!-- ここで $adds のデータを使用 -->
                 <div class="checkbox">
-                    <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ route('add.destroy', ['id' => $add->todo_id]) }}')"/>
+                    {{-- <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ route('add.destroy', ['id' => $add->todo_id]) }}')"/> --}}
                     <a href="{{ route('detail', ['id' => $add->todo_id]) }}">
                         {{ $add->todo->title }}
                     </a>
