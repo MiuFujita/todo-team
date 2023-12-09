@@ -106,7 +106,7 @@
                             <button type="submit" class="remove-btn">Mytodoから解除</button>
                         </form>
                         @else
-                        <form method="post" action="{{ route('todo.add.post', ['todo_id' => $todo->id]) }}">
+                        <form method="post" action="{{ route('todo.add', ['todo_id' => $todo->id]) }}">
                             @csrf
                             <input type="hidden" name="todo_id" value="{{ $todo->id }}">
                             <button type="submit" class="add-btn">Mytodoに追加</button>

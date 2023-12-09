@@ -14,6 +14,9 @@ class AddController extends Controller
 
     public function store(Request $request)
     {
+        // Todo モデルからデータを取得
+        $todo = Todo::find($request->todo_id);
+
         $add = new Add();
         $add->todo_id = $request->todo_id;
         $add->user_id = Auth::user()->id;
@@ -26,24 +29,28 @@ class AddController extends Controller
             return response()->json(['message' => 'Add already exists'], 422);
         }
 
+        
+
         // 重複がない場合のみ保存
         $add->save();
 
-        // Todo モデルからデータを取得
-        $todo = Todo::find($request->todo_id);
+        $userId = Auth::id();
 
         // $adds を取得する例
         // $adds = Add::all(); // または Add::latest()->get(); など、必要なクエリを追加
-        $adds = Add::orderBy('created_at', 'desc')->get(); // created_at は適切なカラムに変更してください
+        $adds = Add::where('user_id', $userId) // ログインユーザーに関連する Add レコードを取得
+        ->with('todo') // 必要に応じて Todo モデルのリレーションを取得
+        ->orderBy('created_at', 'desc')
+        ->get();
 
 
         // ビューにデータを渡す
-        return view('mytodo', ['todo' => $todo, 'adds' => $adds, 'todo_id' => $request->todo_id]);
-        // return redirect()->route('mytodo');
-    
+        return redirect()->route('mytodo')->with(['todo' => $todo, 'todo_id' => $request->todo_id, 'adds' => $adds]);
+        
+        
     }    
 
-    public function destroy($todo_id,Request $request)
+    public function delete($todo_id,Request $request)
     {
         $user_id = Auth::user()->id;
 
@@ -59,7 +66,7 @@ class AddController extends Controller
         $add->delete();
 
         // データを再取得
-        $todo = Todo::find('$todo_id');
+        $todo = Todo::find($todo_id);
         $adds = Add::all();
     
         return redirect()->route('mytodo');
