@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -46,13 +47,15 @@
     </header>
     <main>
         <fieldset class="mylist-box">
-            @if(isset($adds))
+            {{-- @if(isset($adds)) --}}
+            @if(isset($adds) && count($adds) > 0)
+            <legend>Share My Todo</legend>
                 @foreach($adds as $add)
-                <legend>Share My Todo</legend>
-
                 <!-- ここで $adds のデータを使用 -->
                 <div class="checkbox">
-                    {{-- <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ route('add.destroy', ['id' => $add->todo_id]) }}')"/> --}}
+                    {{-- <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ route('add.destroy', ['todo_id' => $add->todo_id]) }}')"/> --}}
+                    <input type="checkbox" data-todo-id="{{ $add->todo_id }}" onchange="destroyAdd(this, '{{ $add->todo_id }}', '{{ route('add.destroy', ['todo_id' => $add->todo_id]) }}')"/>
+
                     <a href="{{ route('detail', ['id' => $add->todo_id]) }}">
                         {{ $add->todo->title }}
                     </a>
@@ -62,8 +65,9 @@
             @endif
         </fieldset>
         <fieldset class="mylist-box">
+            {{-- @if(isset($todos)) --}}
+            @if(isset($todos) && count($todos) > 0)
             <legend>My To Do</legend>
-            @if(isset($todos))
             @foreach($todos as $todo)
             <!-- ここで $todos のデータを使用 -->
             @if(!$todo->share)
